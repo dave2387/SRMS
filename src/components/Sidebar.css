@@ -1,0 +1,59 @@
+/* Sidebar.css */
+.sidebar {
+  width: 250px;
+  height: 773px;
+  margin-top: -387px;
+  background: linear-gradient(180deg, #1e293b, #020617);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.logo {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo span {
+  margin-left: 10px;
+  display: inline;
+}
+
+.menu {
+  flex-grow: 1;
+  margin-top: 10px;
+}
+
+.menu a, .auth a {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  color: #e8ecf3;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.menu a i, .auth a i {
+  min-width: 35px;
+  font-size: 18px;
+}
+
+.auth {
+  padding-bottom: 20px;
+  margin-top: 380px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-content{
+  margin-Left:155px;
+  margin-Top:-770px; 
+  width:1240px;
+  color: black;
+}
