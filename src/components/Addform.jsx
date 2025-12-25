@@ -4,7 +4,6 @@ import Sidebar from './Sidebar'
 function AddForm() {
   return (
     <>
-      <Sidebar />
       <div className="app-content">
         <h2>Add User</h2>
         <input type="text" placeholder="Name" /><br /><br />

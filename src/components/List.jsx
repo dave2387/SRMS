@@ -5,7 +5,6 @@ import Sidebar from './Sidebar'
 function List() {
   return (
     <>
-        <Sidebar />
 
       <div className="app-content">
         <h2>User List</h2>
