@@ -1,10 +1,7 @@
-// ServiceStatus.jsx
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Pencil, Trash } from "react-bootstrap-icons";
 
-const Service_status = () => {
-  // Dummy data including all fields
+function Service_status(){
   const [statuses, setStatuses] = useState([
     {
       ServiceRequestStatusID: 1,
@@ -57,7 +54,7 @@ const Service_status = () => {
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3>Service Request Status</h3>
+        <h1>Service Request Status<br></br><h5>Define and manage service request statuses</h5></h1>
         <button className="btn btn-primary">+ Add Status</button>
       </div>
 
@@ -95,15 +92,8 @@ const Service_status = () => {
               <td>{status.IsNoFurtherActionRequired ? "Yes" : "No"}</td>
               <td>{status.IsAllowedForTechnician ? "Yes" : "No"}</td>
               <td>
-                <button className="btn btn-sm btn-outline-secondary me-2">
-                  <Pencil />
-                </button>
-                <button
-                  className="btn btn-sm btn-outline-danger"
-                  onClick={() => handleDelete(status.ServiceRequestStatusID)}
-                >
-                  <Trash />
-                </button>
+                <button className="btn btn-sm btn-outline-secondary me-2 bi bi-pencil"></button>
+                <button className="btn btn-sm btn-outline-danger bi bi-trash"></button>
               </td>
             </tr>
           ))}
