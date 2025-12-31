@@ -1,0 +1,64 @@
+.welcome-fullscreen {
+  height: 730px;
+  width: 100%;
+  background: linear-gradient(180deg, #0b1220, #020617);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: pageFade 0.8s ease forwards;
+}
+
+/* Main heading */
+.welcome-text {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: slideUp 1.2s ease forwards;
+}
+
+/* Accent text */
+.welcome-text span {
+  color: #3b82f6;
+  text-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+}
+
+/* Subtitle */
+.welcome-tagline {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 1.1s;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
