@@ -1,14 +1,18 @@
 .dashboard-page {
   max-width: 1400px;
   margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-/* HEADER */
 .dashboard-header {
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .dashboard-header h4 {
@@ -25,7 +29,6 @@
   width: 240px;
 }
 
-/* NOTIFICATION */
 .notify {
   position: relative;
   font-size: 20px;
@@ -43,12 +46,24 @@
   border-radius: 50%;
 }
 
-/* CONTENT */
 .dashboard-content {
-  padding-bottom: 30px;
+  flex: 1;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* WELCOME */
+.dashboard-content::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-content > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .welcome-banner {
   background: linear-gradient(90deg, #1e3a8a, #2563eb);
   color: white;
@@ -56,14 +71,12 @@
   border-radius: 18px;
 }
 
-/* BUTTONS */
 .banner-actions {
   margin-top: 15px;
   display: flex;
   gap: 12px;
 }
 
-/* STATS */
 .stat-box {
   padding: 22px;
   border-radius: 16px;
@@ -85,7 +98,6 @@
 .purple { background: #9333ea; }
 .green { background: #16a34a; }
 
-/* ROLE BOX */
 .role-box {
   background: white;
   padding: 24px;
@@ -93,7 +105,6 @@
   box-shadow: 0 6px 14px rgba(0,0,0,0.06);
 }
 
-/* RECENT */
 .recent-section {
   background: white;
   padding: 22px;
@@ -127,37 +138,7 @@
   color: #dc2626;
   font-weight: 600;
 }
-/* ROOT DASHBOARD */
-.dashboard-page {
-  height: 100%;                 /* fill Layout main-content */
-  display: flex;
-  flex-direction: column;
-}
 
-/* HEADER */
-.dashboard-header {
-  flex-shrink: 0;               /* fixed height */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-/* MAIN CONTENT */
-.dashboard-content {
-  flex: 1;                      /* take remaining height */
-  overflow-y: auto;             /* scroll only if needed */
-  padding-bottom: 20px;
-}
-
-/* CENTER CONTENT & LIMIT WIDTH */
-.dashboard-content > * {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* PREVENT OVERFLOW */
 .row {
   margin-left: 0;
   margin-right: 0;

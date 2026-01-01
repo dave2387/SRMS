@@ -1,0 +1,88 @@
+.srt-container {
+  padding: 20px;
+  background: #fff;
+}
+
+.srt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.srt-header h3 {
+  margin: 0;
+}
+
+.srt-header p {
+  margin: 4px 0 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.add-btn {
+  background: #1f2a44;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.srt-table-wrapper {
+  overflow-x: auto;
+}
+
+.srt-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.srt-table th,
+.srt-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.srt-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Priority badges */
+.priority {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.priority-high {
+  color: #dc3545;
+}
+
+.priority-medium {
+  color: #f0ad4e;
+}
+
+.priority-low {
+  color: #28a745;
+}
+
+/* Stats */
+.stats .open {
+  color: #f0ad4e;
+}
+
+.stats .closed {
+  color: #28a745;
+}
+
+/* Actions */
+.actions {
+  font-size: 16px;
+  cursor: pointer;
+}

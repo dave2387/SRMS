@@ -1,0 +1,90 @@
+.service-departments-page {
+  padding: 12px 16px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header p {
+  margin: 2px 0 0;
+  color: #555;
+  font-size: 12px;
+}
+
+.add-department-btn {
+  padding: 6px 12px;
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.add-department-btn:hover {
+  background-color: #2563eb;
+}
+
+.departments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.departments-table th,
+.departments-table td {
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.departments-table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+.row-blue {
+  background-color: #eff6ff;
+}
+
+.row-green {
+  background-color: #ecfdf5;
+}
+
+.departments-table button {
+  margin-left: 6px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.edit-action {
+  margin-right: 8px;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+.delete-action {
+  cursor: pointer;
+  color: #dc2626;
+}

@@ -19,27 +19,27 @@ const Sidebar = () => {
 
         {/* Dashboards */}
         <li className="nav-item">
-          <span className="nav-link">
+          <Link className="nav-link" to="/request_dash">
             <i className="bi bi-grid"></i> Dashboards
-          </span>
+          </Link>
 
           <ul className="submenu">
             <li>
-              <Link to="/request_dash">
+              <Link to="/">
                 <i className="bi bi-speedometer2"></i>
                 <span>Requestor Dashboard</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/hod-dashboard">
+              <Link to="/">
                 <i className="bi bi-speedometer2"></i>
                 <span>HOD Dashboard</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/technician-dashboard">
+              <Link to="/">
                 <i className="bi bi-speedometer2"></i>
                 <span>Technician Dashboard</span>
               </Link>
@@ -54,18 +54,18 @@ const Sidebar = () => {
           </span>
 
           <ul className="submenu">
-            <li><Link to="/request-status">Request Status</Link></li>
-            <li><Link to="/service-departments">Service Departments</Link></li>
-            <li><Link to="/department-persons">Department Persons</Link></li>
-            <li><Link to="/service-types">Service Types</Link></li>
-            <li><Link to="/request-types">Request Types</Link></li>
-            <li><Link to="/type-person-mapping">Type-Wise Person Mapping</Link></li>
+            <li><Link to="/request_status">Request Status</Link></li>
+            <li><Link to="/service_dept">Service Departments</Link></li>
+            <li><Link to="/dept_person">Department Persons</Link></li>
+            <li><Link to="/service_type">Service Types</Link></li>
+            <li><Link to="/req_type">Request Types</Link></li>
+            <li><Link to="/ser_req_type_wp">Type-Wise Person Mapping</Link></li>
           </ul>
         </li>
 
         {/* Service Requests */}
         <li className="nav-item">
-          <Link className="nav-link" to="/service-requests">
+          <Link className="nav-link" to="/">
             <i className="bi bi-ticket-detailed"></i> Service Requests
           </Link>
         </li>
