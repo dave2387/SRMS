@@ -1,39 +1,48 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ServiceTypes = () => {
-  const [serviceTypes, setServiceTypes] = useState([
+function Request_status() {
+  const [statuses, setStatuses] = useState([
     {
-      ServiceTypeID: 101,
-      ServiceTypeName: "IT Support",
-      Description: "Technical assistance",
+      ServiceRequestStatusID: 1,
+      ServiceRequestStatusName: "Pending",
+      ServiceRequestStatusSystemName: "PENDING",
       Sequence: 1,
-      UserID: 1,
-      Created: "2025-01-01 10:00",
-      Modified: "2025-12-20 09:00",
-      IsForStaff: true,
-      IsForStudent: false,
+      Description: "Request is pending",
+      UserID: 101,
+      Created: "2025-12-25 10:00:00",
+      Modified: "2025-12-25 10:30:00",
+      ServiceRequestStatusCssClass: "badge bg-warning text-dark",
+      IsOpen: true,
+      IsNoFurtherActionRequired: false,
+      IsAllowedForTechnician: false,
     },
     {
-      ServiceTypeID: 102,
-      ServiceTypeName: "Maintenance",
-      Description: "Building and facility maintenance",
+      ServiceRequestStatusID: 2,
+      ServiceRequestStatusName: "In Progress",
+      ServiceRequestStatusSystemName: "IN_PROGRESS",
       Sequence: 2,
-      UserID: 2,
-      Created: "2025-01-02 11:00",
-      Modified: "2025-12-21 09:15",
-      IsForStaff: true,
-      IsForStudent: true,
+      Description: "Request is being worked on",
+      UserID: 102,
+      Created: "2025-12-24 09:30:00",
+      Modified: "2025-12-24 10:15:00",
+      ServiceRequestStatusCssClass: "badge bg-info text-dark",
+      IsOpen: true,
+      IsNoFurtherActionRequired: false,
+      IsAllowedForTechnician: true,
     },
   ]);
 
   const emptyForm = {
-    ServiceTypeName: "",
-    Description: "",
+    ServiceRequestStatusName: "",
+    ServiceRequestStatusSystemName: "",
     Sequence: "",
+    Description: "",
     UserID: "",
-    IsForStaff: false,
-    IsForStudent: false,
+    ServiceRequestStatusCssClass: "",
+    IsOpen: false,
+    IsNoFurtherActionRequired: false,
+    IsAllowedForTechnician: false,
   };
 
   const [formData, setFormData] = useState(emptyForm);
@@ -47,22 +56,22 @@ const ServiceTypes = () => {
 
   const handleSubmit = () => {
     if (editingId) {
-      setServiceTypes(
-        serviceTypes.map((t) =>
-          t.ServiceTypeID === editingId
+      setStatuses(
+        statuses.map((s) =>
+          s.ServiceRequestStatusID === editingId
             ? {
-                ...t,
+                ...s,
                 ...formData,
                 Modified: new Date().toLocaleString(),
               }
-            : t
+            : s
         )
       );
     } else {
-      setServiceTypes([
-        ...serviceTypes,
+      setStatuses([
+        ...statuses,
         {
-          ServiceTypeID: Date.now(),
+          ServiceRequestStatusID: Date.now(),
           ...formData,
           Created: new Date().toLocaleString(),
           Modified: new Date().toLocaleString(),
@@ -75,14 +84,14 @@ const ServiceTypes = () => {
     setShowForm(false);
   };
 
-  const handleEdit = (type) => {
-    setFormData(type);
-    setEditingId(type.ServiceTypeID);
+  const handleEdit = (status) => {
+    setFormData(status);
+    setEditingId(status.ServiceRequestStatusID);
     setShowForm(true);
   };
 
   const handleDelete = (id) => {
-    setServiceTypes(serviceTypes.filter((t) => t.ServiceTypeID !== id));
+    setStatuses(statuses.filter((s) => s.ServiceRequestStatusID !== id));
   };
 
   return (
@@ -90,13 +99,13 @@ const ServiceTypes = () => {
       {/* HEADER */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h3>
-          Service Types
+          Service Request Status
           <div className="text-muted fs-6">
-            Manage all service types
+            Define and manage service request statuses
           </div>
         </h3>
         <button className="btn btn-primary" onClick={() => setShowForm(true)}>
-          + Add Service Type
+          + Add Status
         </button>
       </div>
 
@@ -104,15 +113,25 @@ const ServiceTypes = () => {
       {showForm && (
         <div className="card mb-4">
           <div className="card-body">
-            <h5>{editingId ? "Edit Service Type" : "Add Service Type"}</h5>
+            <h5>{editingId ? "Edit Status" : "Add Status"}</h5>
 
             <div className="row g-3 mt-2">
-              <div className="col-md-6">
-                <label className="form-label">Service Type Name</label>
+              <div className="col-md-4">
+                <label className="form-label">Status Name</label>
                 <input
                   className="form-control"
-                  name="ServiceTypeName"
-                  value={formData.ServiceTypeName}
+                  name="ServiceRequestStatusName"
+                  value={formData.ServiceRequestStatusName}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-4">
+                <label className="form-label">System Name</label>
+                <input
+                  className="form-control"
+                  name="ServiceRequestStatusSystemName"
+                  value={formData.ServiceRequestStatusSystemName}
                   onChange={handleChange}
                 />
               </div>
@@ -128,9 +147,10 @@ const ServiceTypes = () => {
                 />
               </div>
 
-              <div className="col-md-4">
+              <div className="col-md-2">
                 <label className="form-label">User ID</label>
                 <input
+                  type="number"
                   className="form-control"
                   name="UserID"
                   value={formData.UserID}
@@ -138,7 +158,7 @@ const ServiceTypes = () => {
                 />
               </div>
 
-              <div className="col-md-12">
+              <div className="col-md-6">
                 <label className="form-label">Description</label>
                 <input
                   className="form-control"
@@ -148,17 +168,38 @@ const ServiceTypes = () => {
                 />
               </div>
 
+              <div className="col-md-6">
+                <label className="form-label">CSS Class</label>
+                <input
+                  className="form-control"
+                  name="ServiceRequestStatusCssClass"
+                  value={formData.ServiceRequestStatusCssClass}
+                  onChange={handleChange}
+                />
+              </div>
+
               <div className="col-md-12 d-flex gap-4 mt-2">
                 <div className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    name="IsForStaff"
-                    checked={formData.IsForStaff}
+                    name="IsOpen"
+                    checked={formData.IsOpen}
+                    onChange={handleChange}
+                  />
+                  <label className="form-check-label">Is Open</label>
+                </div>
+
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="IsNoFurtherActionRequired"
+                    checked={formData.IsNoFurtherActionRequired}
                     onChange={handleChange}
                   />
                   <label className="form-check-label">
-                    For Staff
+                    No Further Action
                   </label>
                 </div>
 
@@ -166,12 +207,12 @@ const ServiceTypes = () => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    name="IsForStudent"
-                    checked={formData.IsForStudent}
+                    name="IsAllowedForTechnician"
+                    checked={formData.IsAllowedForTechnician}
                     onChange={handleChange}
                   />
                   <label className="form-check-label">
-                    For Student
+                    Technician Allowed
                   </label>
                 </div>
               </div>
@@ -197,39 +238,47 @@ const ServiceTypes = () => {
         <thead className="table-light">
           <tr>
             <th>#</th>
-            <th>Service Type</th>
-            <th>Description</th>
+            <th>Status</th>
+            <th>System</th>
             <th>Seq</th>
+            <th>Description</th>
             <th>User</th>
             <th>Created</th>
             <th>Modified</th>
-            <th>Staff</th>
-            <th>Student</th>
+            <th>Open</th>
+            <th>No Action</th>
+            <th>Technician</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {serviceTypes.map((t, i) => (
-            <tr key={t.ServiceTypeID}>
+          {statuses.map((s, i) => (
+            <tr key={s.ServiceRequestStatusID}>
               <td>{i + 1}</td>
-              <td>{t.ServiceTypeName}</td>
-              <td>{t.Description}</td>
-              <td>{t.Sequence}</td>
-              <td>{t.UserID}</td>
-              <td>{t.Created}</td>
-              <td>{t.Modified}</td>
-              <td>{t.IsForStaff ? "Yes" : "No"}</td>
-              <td>{t.IsForStudent ? "Yes" : "No"}</td>
+              <td>
+                <span className={s.ServiceRequestStatusCssClass}>
+                  {s.ServiceRequestStatusName}
+                </span>
+              </td>
+              <td>{s.ServiceRequestStatusSystemName}</td>
+              <td>{s.Sequence}</td>
+              <td>{s.Description}</td>
+              <td>{s.UserID}</td>
+              <td>{s.Created}</td>
+              <td>{s.Modified}</td>
+              <td>{s.IsOpen ? "Yes" : "No"}</td>
+              <td>{s.IsNoFurtherActionRequired ? "Yes" : "No"}</td>
+              <td>{s.IsAllowedForTechnician ? "Yes" : "No"}</td>
               <td>
                 <button
                   className="btn btn-sm btn-outline-secondary me-2"
-                  onClick={() => handleEdit(t)}
+                  onClick={() => handleEdit(s)}
                 >
                   ✏️
                 </button>
                 <button
                   className="btn btn-sm btn-outline-danger"
-                  onClick={() => handleDelete(t.ServiceTypeID)}
+                  onClick={() => handleDelete(s.ServiceRequestStatusID)}
                 >
                   🗑️
                 </button>
@@ -240,6 +289,6 @@ const ServiceTypes = () => {
       </table>
     </div>
   );
-};
+}
 
-export default ServiceTypes;
+export default Request_status;

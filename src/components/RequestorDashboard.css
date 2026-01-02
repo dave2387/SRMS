@@ -1,0 +1,156 @@
+.requestor-wrapper {
+  
+  padding: 24px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background-color: #fff; 
+  color: black;
+}
+
+.notification {
+  position: relative;
+  font-size: 18px;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* STAT CARDS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  color: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.stat-card i {
+  font-size: 30px;
+  opacity: 0.9;
+}
+
+.blue { background: #0d6efd; }
+.orange { background: #f59e0b; }
+.purple { background: #9333ea; }
+.green { background: #16a34a; }
+
+/* BUTTON */
+.raise-btn {
+  margin: 20px 0;
+  background: #111827;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* TABLE */
+.table-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+td span {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+}
+td {
+  vertical-align: middle;
+}
+td:nth-child(4),
+th:nth-child(4) {
+  text-align: center;
+}
+
+/* STATUS */
+.status {
+  display: inline-block;        /* IMPORTANT */
+  min-width: 90px;              /* uniform size */
+  text-align: center;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;          /* prevents text break */
+}
+
+/* STATUS COLORS */
+.progress {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.pending {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.completed {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+/* PRIORITY */
+.high { color: #dc2626; }
+.medium { color: #f59e0b; }
+.low { color: #16a34a; }

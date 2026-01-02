@@ -1,105 +1,278 @@
-import React from "react";
-import "./DepartmentPersonnel.css";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const DepartmentPersonnel = () => {
-    const personnel = [
-        {
-            id: 1,
-            serviceDeptPersonID: 1,
-            serviceDeptID: 101,
-            staffID: 1001,
-            name: "John Smith",
-            fromDate: "2023-01-01",
-            toDate: "2025-12-31",
-            description: "IT HOD",
-            userID: 1,
-            created: "2023-01-01 10:00",
-            modified: "2025-12-20 09:00",
-            isHODStaff: true
-        },
-        {
-            id: 2,
-            serviceDeptPersonID: 2,
-            serviceDeptID: 101,
-            staffID: 1002,
-            name: "Sarah Johnson",
-            fromDate: "2023-01-01",
-            toDate: "2025-12-31",
-            description: "",
-            userID: 2,
-            created: "2023-01-01 11:00",
-            modified: "2025-12-20 09:15",
-            isHODStaff: false
-        },
-        {
-            id: 3,
-            serviceDeptPersonID: 3,
-            serviceDeptID: 102,
-            staffID: 1003,
-            name: "Mike Brown",
-            fromDate: "2023-02-15",
-            toDate: "2025-12-31",
-            description: "Maintenance Staff",
-            userID: 3,
-            created: "2023-02-15 09:30",
-            modified: "2025-12-20 09:30",
-            isHODStaff: false
-        },
-    ];
+  const [personnel, setPersonnel] = useState([
+    {
+      ServiceDeptPersonID: 1,
+      ServiceDeptID: 101,
+      StaffID: 1001,
+      StaffName: "John Smith",
+      FromDate: "2023-01-01",
+      ToDate: "2025-12-31",
+      Description: "IT HOD",
+      UserID: 1,
+      Created: "2023-01-01 10:00",
+      Modified: "2025-12-20 09:00",
+      IsHODStaff: true,
+    },
+    {
+      ServiceDeptPersonID: 2,
+      ServiceDeptID: 101,
+      StaffID: 1002,
+      StaffName: "Sarah Johnson",
+      FromDate: "2023-01-01",
+      ToDate: "2025-12-31",
+      Description: "",
+      UserID: 2,
+      Created: "2023-01-01 11:00",
+      Modified: "2025-12-20 09:15",
+      IsHODStaff: false,
+    },
+  ]);
 
-    return (
-        <div className="page-container">
-            <div className="header">
-                <h1>Department Personnel<br></br><h5>Manage staff mapped to each service department</h5></h1>
-                <button className="add-btn">+ Add Person</button>
+  const emptyForm = {
+    ServiceDeptID: "",
+    StaffID: "",
+    StaffName: "",
+    FromDate: "",
+    ToDate: "",
+    Description: "",
+    UserID: "",
+    IsHODStaff: false,
+  };
+
+  const [formData, setFormData] = useState(emptyForm);
+  const [editingId, setEditingId] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
+
+  const handleSubmit = () => {
+    if (editingId) {
+      setPersonnel(
+        personnel.map((p) =>
+          p.ServiceDeptPersonID === editingId
+            ? {
+                ...p,
+                ...formData,
+                Modified: new Date().toLocaleString(),
+              }
+            : p
+        )
+      );
+    } else {
+      setPersonnel([
+        ...personnel,
+        {
+          ServiceDeptPersonID: Date.now(),
+          ...formData,
+          Created: new Date().toLocaleString(),
+          Modified: new Date().toLocaleString(),
+        },
+      ]);
+    }
+
+    setFormData(emptyForm);
+    setEditingId(null);
+    setShowForm(false);
+  };
+
+  const handleEdit = (person) => {
+    setFormData(person);
+    setEditingId(person.ServiceDeptPersonID);
+    setShowForm(true);
+  };
+
+  const handleDelete = (id) => {
+    setPersonnel(personnel.filter((p) => p.ServiceDeptPersonID !== id));
+  };
+
+  return (
+    <div className="container mt-4">
+      {/* HEADER */}
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3>
+          Department Personnel
+          <div className="text-muted fs-6">
+            Manage staff mapped to service departments
+          </div>
+        </h3>
+        <button className="btn btn-primary" onClick={() => setShowForm(true)}>
+          + Add Person
+        </button>
+      </div>
+
+      {/* FORM */}
+      {showForm && (
+        <div className="card mb-4">
+          <div className="card-body">
+            <h5>{editingId ? "Edit Personnel" : "Add Personnel"}</h5>
+
+            <div className="row g-3 mt-2">
+              <div className="col-md-3">
+                <label className="form-label">Service Dept ID</label>
+                <input
+                  className="form-control"
+                  name="ServiceDeptID"
+                  value={formData.ServiceDeptID}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-3">
+                <label className="form-label">Staff ID</label>
+                <input
+                  className="form-control"
+                  name="StaffID"
+                  value={formData.StaffID}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-6">
+                <label className="form-label">Staff Name</label>
+                <input
+                  className="form-control"
+                  name="StaffName"
+                  value={formData.StaffName}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-3">
+                <label className="form-label">From Date</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="FromDate"
+                  value={formData.FromDate}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-3">
+                <label className="form-label">To Date</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="ToDate"
+                  value={formData.ToDate}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-4">
+                <label className="form-label">User ID</label>
+                <input
+                  className="form-control"
+                  name="UserID"
+                  value={formData.UserID}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-8">
+                <label className="form-label">Description</label>
+                <input
+                  className="form-control"
+                  name="Description"
+                  value={formData.Description}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-12 mt-2">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    name="IsHODStaff"
+                    checked={formData.IsHODStaff}
+                    onChange={handleChange}
+                  />
+                  <label className="form-check-label">
+                    Is HOD Staff
+                  </label>
+                </div>
+              </div>
             </div>
 
-            {/* Scrollable table container */}
-            <div className="table-container">
-                <table className="personnel-table">
-                    <thead>
-                        <tr>
-                            <th>ServiceDeptPersonID</th>
-                            <th>ServiceDeptID</th>
-                            <th>StaffID</th>
-                            <th>Staff Name</th>
-                            <th>From Date</th>
-                            <th>To Date</th>
-                            <th>Description</th>
-                            <th>UserID</th>
-                            <th>Created</th>
-                            <th>Modified</th>
-                            <th>IsHODStaff</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {personnel.map((person) => (
-                            <tr key={person.id}>
-                                <td>{person.serviceDeptPersonID}</td>
-                                <td>{person.serviceDeptID}</td>
-                                <td>{person.staffID}</td>
-                                <td>
-                                    {person.name} {person.isHODStaff && <span className="role-badge">HOD</span>}
-                                </td>
-                                <td>{person.fromDate}</td>
-                                <td>{person.toDate}</td>
-                                <td>{person.description}</td>
-                                <td>{person.userID}</td>
-                                <td>{person.created}</td>
-                                <td>{person.modified}</td>
-                                <td>{person.isHODStaff ? "Yes" : "No"}</td>
-                                <td>
-                                    <button style={{ marginLeft: "8px", backgroundColor: "white", color: "black" }} className="bi bi-pencil"></button>
-                                    <button style={{ marginLeft: "8px", backgroundColor: "white", color: "black" }} className="bi bi-trash"></button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className="mt-3">
+              <button className="btn btn-success me-2" onClick={handleSubmit}>
+                Save
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => setShowForm(false)}
+              >
+                Cancel
+              </button>
             </div>
+          </div>
         </div>
-    );
+      )}
+
+      {/* TABLE */}
+      <table className="table table-bordered table-hover">
+        <thead className="table-light">
+          <tr>
+            <th>#</th>
+            <th>ServiceDept</th>
+            <th>Staff</th>
+            <th>Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Description</th>
+            <th>User</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>HOD</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {personnel.map((p, i) => (
+            <tr key={p.ServiceDeptPersonID}>
+              <td>{i + 1}</td>
+              <td>{p.ServiceDeptID}</td>
+              <td>{p.StaffID}</td>
+              <td>
+                {p.StaffName}{" "}
+                {p.IsHODStaff && (
+                  <span className="badge bg-success ms-2">HOD</span>
+                )}
+              </td>
+              <td>{p.FromDate}</td>
+              <td>{p.ToDate}</td>
+              <td>{p.Description}</td>
+              <td>{p.UserID}</td>
+              <td>{p.Created}</td>
+              <td>{p.Modified}</td>
+              <td>{p.IsHODStaff ? "Yes" : "No"}</td>
+              <td>
+                <button
+                  className="btn btn-sm btn-outline-secondary me-2"
+                  onClick={() => handleEdit(p)}
+                >
+                  ✏️
+                </button>
+                <button
+                  className="btn btn-sm btn-outline-danger"
+                  onClick={() => handleDelete(p.ServiceDeptPersonID)}
+                >
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default DepartmentPersonnel;

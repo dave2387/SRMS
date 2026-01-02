@@ -25,21 +25,21 @@ const Sidebar = () => {
 
           <ul className="submenu">
             <li>
-              <Link to="/">
+              <Link to="/requestor_dashboard">
                 <i className="bi bi-speedometer2"></i>
                 <span>Requestor Dashboard</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/">
+              <Link to="/hod_dashboard">
                 <i className="bi bi-speedometer2"></i>
                 <span>HOD Dashboard</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/">
+              <Link to="/Tech_dashboard">
                 <i className="bi bi-speedometer2"></i>
                 <span>Technician Dashboard</span>
               </Link>

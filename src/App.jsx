@@ -3,13 +3,15 @@ import Layout from "./components/Layout";
 
 import WelcomeMsg from "./components/WelcomeMsg";
 import Dashboard from "./components/Dashboard";
-import RequestStatus from "./components/RequestStatus";
 import ServiceDepartments from "./components/ServiceDepartments";
-import DepartmentPersonnel from "./components/DepartmentPersonnel ";
-import Service_status from "./components/Service_status";
+import DepartmentPersonnel from "./components/DepartmentPersonnel"
 import ServiceTypes from "./components/ServiceTypes";
 import ServiceRequestTypes from "./components/ServiceRequestTypes";
 import ServiceRequestTypeWisePerson from "./components/ServiceRequestTypeWisePerson";
+import HodDashboard from "./components/HODDashboard";
+import Request_status from "./components/Request_status";
+import RequestorDashboard from "./components/RequestorDashboard";
+import TechnicianDashboard from "./components/TechnicianDashboard";
 
 function App() {
   return (
@@ -17,16 +19,17 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
 
-          {/* This renders ONLY when path = "/" */}
           <Route index element={<WelcomeMsg />} />
-
           <Route path="request_dash" element={<Dashboard />} />
-          <Route path="/request_status" element={<Service_status/>} />
+          <Route path="/request_status" element={<Request_status/>} />
           <Route path="/service_dept" element={<ServiceDepartments/>} />
           <Route path="/dept_person" element={<DepartmentPersonnel/>} />
           <Route path="/service_type" element={<ServiceTypes/>} />
           <Route path="/req_type" element={<ServiceRequestTypes/>} />
           <Route path="/ser_req_type_wp" element={<ServiceRequestTypeWisePerson/>} />
+          <Route path="/hod_dashboard" element={<HodDashboard/>} />
+          <Route path="/requestor_dashboard" element={<RequestorDashboard/>} />
+          <Route path="/Tech_dashboard" element={<TechnicianDashboard/>} />
 
         </Route>
       </Routes>

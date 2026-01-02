@@ -86,3 +86,11 @@
   font-size: 16px;
   cursor: pointer;
 }
+td.stats {
+  display: flex;            /* use flexbox to keep content in one row */
+  justify-content: center;  /* center horizontally, optional */
+  align-items: center;      /* center vertically */
+  gap: 4px;                 /* small spacing between spans */
+  white-space: nowrap; 
+  height: 65px;     /* prevent wrapping */
+}

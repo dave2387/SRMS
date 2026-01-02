@@ -1,0 +1,120 @@
+.tech-page {
+  
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.tech-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tech-header-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.search-box {
+  width: 260px;
+  border-radius: 8px;
+}
+
+.notify {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.notify span {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* TOP CARDS */
+.top-card {
+  color: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+}
+
+.top-card p {
+  margin: 0;
+}
+
+.top-card h2 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.icon {
+  font-size: 30px;
+  opacity: 0.9;
+}
+
+.blue { background: #0d6efd; }
+.orange { background: #f59e0b; }
+.purple { background: #9333ea; }
+.green { background: #16a34a; }
+
+/* MINI CARDS */
+.mini-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mini-icon {
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+/* TABLE */
+.table-wrapper {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.pill {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.pill.blue {
+  background: #e0edff;
+  color: #2563eb;
+}
+
+.pill.green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.high { color: #dc2626; font-weight: 600; }
+.medium { color: #f59e0b; font-weight: 600; }
+.low { color: #16a34a; font-weight: 600; }
