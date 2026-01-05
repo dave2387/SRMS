@@ -12,6 +12,7 @@ import HodDashboard from "./components/HODDashboard";
 import Request_status from "./components/Request_status";
 import RequestorDashboard from "./components/RequestorDashboard";
 import TechnicianDashboard from "./components/TechnicianDashboard";
+// import ServiceRequests from "./components/ServiceRequests";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/hod_dashboard" element={<HodDashboard/>} />
           <Route path="/requestor_dashboard" element={<RequestorDashboard/>} />
           <Route path="/Tech_dashboard" element={<TechnicianDashboard/>} />
+          {/* <Route path="/Service_request" element={<ServiceRequests/>} /> */}
 
         </Route>
       </Routes>
