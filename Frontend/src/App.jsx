@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
@@ -12,7 +13,6 @@ import HodDashboard from "./components/HODDashboard";
 import Request_status from "./components/Request_status";
 import RequestorDashboard from "./components/RequestorDashboard";
 import TechnicianDashboard from "./components/TechnicianDashboard";
-import React from "react";
 // import ServiceRequests from "./components/ServiceRequests";
 
 function App() {
