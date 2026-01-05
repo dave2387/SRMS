@@ -65,7 +65,7 @@ const Sidebar = () => {
 
         {/* Service Requests */}
         <li className="nav-item">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/Service_request">
             <i className="bi bi-ticket-detailed"></i> Service Requests
           </Link>
         </li>
