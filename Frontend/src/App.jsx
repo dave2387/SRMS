@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
 import WelcomeMsg from "./components/WelcomeMsg";
@@ -19,9 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route element={<Layout />}>
-
           <Route index element={<WelcomeMsg />} />
           <Route path="request_dash" element={<Dashboard />} />
           <Route path="/request_status" element={<Request_status/>} />
