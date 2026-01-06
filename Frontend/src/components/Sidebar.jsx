@@ -74,11 +74,13 @@ const Sidebar = () => {
 
       {/* Footer */}
       <div className="sidebar-footer">
-        <i className="bi bi-person-circle"></i>
-        <div>
-          <strong>Admin User</strong>
-          <small>Administrator</small>
-        </div>
+        <Link to="/profile" className="sidebar-footer-link">
+          <i className="bi bi-person-circle"></i>
+          <div>
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </div>
+        </Link>
       </div>
     </div>
   );

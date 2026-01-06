@@ -13,6 +13,7 @@ import HodDashboard from "./components/HODDashboard";
 import Request_status from "./components/Request_status";
 import RequestorDashboard from "./components/RequestorDashboard";
 import TechnicianDashboard from "./components/TechnicianDashboard";
+import LoginPage from "./components/Loginpage";
 // import ServiceRequests from "./components/ServiceRequests";
 
 function App() {
@@ -22,18 +23,19 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<WelcomeMsg />} />
           <Route path="request_dash" element={<Dashboard />} />
-          <Route path="/request_status" element={<Request_status/>} />
-          <Route path="/service_dept" element={<ServiceDepartments/>} />
-          <Route path="/dept_person" element={<DepartmentPersonnel/>} />
-          <Route path="/service_type" element={<ServiceTypes/>} />
-          <Route path="/req_type" element={<ServiceRequestTypes/>} />
-          <Route path="/ser_req_type_wp" element={<ServiceRequestTypeWisePerson/>} />
-          <Route path="/hod_dashboard" element={<HodDashboard/>} />
-          <Route path="/requestor_dashboard" element={<RequestorDashboard/>} />
-          <Route path="/Tech_dashboard" element={<TechnicianDashboard/>} />
+          <Route path="/request_status" element={<Request_status />} />
+          <Route path="/service_dept" element={<ServiceDepartments />} />
+          <Route path="/dept_person" element={<DepartmentPersonnel />} />
+          <Route path="/service_type" element={<ServiceTypes />} />
+          <Route path="/req_type" element={<ServiceRequestTypes />} />
+          <Route path="/ser_req_type_wp" element={<ServiceRequestTypeWisePerson />} />
+          <Route path="/hod_dashboard" element={<HodDashboard />} />
+          <Route path="/requestor_dashboard" element={<RequestorDashboard />} />
+          <Route path="/Tech_dashboard" element={<TechnicianDashboard />} />
           {/* <Route path="/Service_request" element={<ServiceRequests/>} /> */}
 
         </Route>
+        <Route path="/profile" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
