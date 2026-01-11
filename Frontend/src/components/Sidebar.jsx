@@ -1,8 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import sidebarConfig from "./SidebarConfig";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  // ✅ IF NOT LOGGED IN, DON'T SHOW SIDEBAR
+  if (!user) return null;
+
+  // ✅ LOGOUT HANDLER (FIXED)
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
+  const menuItems = sidebarConfig[user.role] || [];
+
   return (
     <div className="sidebar">
       {/* Header */}
@@ -16,71 +32,50 @@ const Sidebar = () => {
 
       {/* Menu */}
       <ul className="nav flex-column">
-
-        {/* Dashboards */}
-        <li className="nav-item">
-          <Link className="nav-link" to="/request_dash">
-            <i className="bi bi-grid"></i> Dashboards
-          </Link>
-
-          <ul className="submenu">
-            <li>
-              <Link to="/requestor_dashboard">
-                <i className="bi bi-speedometer2"></i>
-                <span>Requestor Dashboard</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/hod_dashboard">
-                <i className="bi bi-speedometer2"></i>
-                <span>HOD Dashboard</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/Tech_dashboard">
-                <i className="bi bi-speedometer2"></i>
-                <span>Technician Dashboard</span>
-              </Link>
-            </li>
-          </ul>
-        </li>
-
-        {/* Master Setup */}
-        <li className="nav-item">
-          <span className="nav-link">
-            <i className="bi bi-gear"></i> Master Setup
-          </span>
-
-          <ul className="submenu">
-            <li><Link to="/request_status">Request Status</Link></li>
-            <li><Link to="/service_dept">Service Departments</Link></li>
-            <li><Link to="/dept_person">Department Persons</Link></li>
-            <li><Link to="/service_type">Service Types</Link></li>
-            <li><Link to="/req_type">Request Types</Link></li>
-            <li><Link to="/ser_req_type_wp">Type-Wise Person Mapping</Link></li>
-          </ul>
-        </li>
-
-        {/* Service Requests */}
-        <li className="nav-item">
-          <Link className="nav-link" to="/Service_request">
-            <i className="bi bi-ticket-detailed"></i> Service Requests
-          </Link>
-        </li>
-
+        {menuItems.map((item, idx) => (
+          <li key={idx} className="nav-item">
+            {item.submenu ? (
+              <>
+                <span className="nav-link menu-title">
+                  <i className={item.icon}></i> {item.title}
+                </span>
+                <ul className="submenu">
+                  {item.submenu.map((sub, subIdx) => (
+                    <li key={subIdx}>
+                      <NavLink
+                        to={sub.path}
+                        className={({ isActive }) =>
+                          isActive ? "active" : ""
+                        }
+                      >
+                        <span>{sub.label}</span>
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <NavLink to={item.path} className="nav-link">
+                <i className={item.icon}></i> {item.title}
+              </NavLink>
+            )}
+          </li>
+        ))}
       </ul>
 
       {/* Footer */}
       <div className="sidebar-footer">
-        <Link to="/profile" className="sidebar-footer-link">
+        <div className="user-info">
           <i className="bi bi-person-circle"></i>
           <div>
-            <strong>Admin User</strong>
-            <small>Administrator</small>
+            <strong>{user.email}</strong>
+            <small>{user.role.toUpperCase()}</small>
           </div>
-        </Link>
+        </div>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          <i className="bi bi-box-arrow-right"></i> Logout
+        </button>
       </div>
     </div>
   );
