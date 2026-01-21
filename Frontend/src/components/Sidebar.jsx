@@ -14,7 +14,7 @@ const Sidebar = () => {
   // ✅ LOGOUT HANDLER (FIXED)
   const handleLogout = () => {
     logout();
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   };
 
   const menuItems = sidebarConfig[user.role] || [];

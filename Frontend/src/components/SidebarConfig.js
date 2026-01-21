@@ -18,20 +18,20 @@ const sidebarConfig = {
         { label: "Type-Wise Person Mapping", path: "/admin/service-type-wise-person" },
       ],
     },
-    { title: "Service Requests", icon: "bi bi-ticket-detailed", path: "/admin/service-requests" },
+    { title: "Service_Requests", icon: "bi bi-ticket-detailed", path: "/admin/service_requests" },
   ],
   hod: [
     { title: "Dashboards", icon: "bi bi-grid", submenu: [{ label: "HOD Dashboard", path: "/hod/dashboard" }] },
-    { title: "Service Requests", icon: "bi bi-ticket-detailed", path: "/hod/service-requests" },
+    { title: "Service_Requests", icon: "bi bi-ticket-detailed", path: "/hod/service_requests" },
   ],
   technician: [
     { title: "Dashboards", icon: "bi bi-grid", submenu: [{ label: "Technician Dashboard", path: "/technician/dashboard" }] },
-    { title: "Service Requests", icon: "bi bi-ticket-detailed", path: "/technician/service-requests" },
+    { title: "Service_Requests", icon: "bi bi-ticket-detailed", path: "/technician/service_requests" },
     { title: "Request Status", icon: "bi bi-info-circle", path: "/technician/request-status" },
   ],
   requestor: [
     { title: "Dashboards", icon: "bi bi-grid", submenu: [{ label: "Requestor Dashboard", path: "/requestor/dashboard" }] },
-    { title: "Service Requests", icon: "bi bi-ticket-detailed", path: "/requestor/service-requests" },
+    { title: "Service_Requests", icon: "bi bi-ticket-detailed", path: "/requestor/service_requests" },
     { title: "Request Status", icon: "bi bi-info-circle", path: "/requestor/request-status" },
   ],
 };
