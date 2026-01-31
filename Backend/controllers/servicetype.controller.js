@@ -1,4 +1,4 @@
-import ServiceType from "../models/ServiceType.model";
+import ServiceTypeModel from "../models/ServiceType.model.js";
 
 
 export const createServiceType = async (req, res) => {
@@ -12,7 +12,7 @@ export const createServiceType = async (req, res) => {
       userId,
     } = req.body;
 
-    const exists = await ServiceType.findOne({
+    const exists = await ServiceTypeModel.findOne({
       name,
       description,
       userId,
@@ -25,7 +25,7 @@ export const createServiceType = async (req, res) => {
       });
     }
 
-    const serviceType = await ServiceType.create({
+    const serviceType = await ServiceTypeModel.create({
       name,
       description,
       sequence,
@@ -43,9 +43,10 @@ export const createServiceType = async (req, res) => {
   }
 };
 
+
 export const getAllServiceTypes = async (req, res) => {
   try {
-    const serviceTypes = await ServiceType.find();
+    const serviceTypes = await ServiceTypeModel.find();
     res.json(serviceTypes);
   } catch (error) {
     res.status(500).json({ error: error.message });
