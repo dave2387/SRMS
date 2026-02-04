@@ -10,6 +10,4 @@ app.use(express.json());
 app.use("/api/servicetype",servicetypeRoute);
 app.use("/api/servicedept",ServicedeptRoute);
 
-
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
