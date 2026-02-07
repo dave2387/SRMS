@@ -13,7 +13,7 @@ const router = express.Router();
 router.post("/createSer", createServiceType);
 router.get("/getAll", getAllServiceTypes);
 router.get("/:id", getServiceTypeById);
-router.delete("/:id", deleteServiceType);
 router.patch("/:id", updateServiceType);
+router.delete("/:id", deleteServiceType);
 
 export default router;
