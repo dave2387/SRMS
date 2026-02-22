@@ -1,6 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import { dbConnect } from "./config/db.js";
-
 import servicetypeRoute from "./routes/ServiceType.route.js";
 import servicedeptRoute from "./routes/ServiceDept.route.js";
 import serviceDeptPersonRoute from "./routes/ServiceDeptPerson.route.js";
@@ -10,8 +12,8 @@ import serviceRequestStatusRoute from "./routes/ServiceRequestStatus.route.js";
 import serviceRequestTypeRoute from "./routes/ServiceRequestType.route.js";
 import serviceRequestTypeWisePersonRoute from "./routes/ServiceRequestTypeWisePerson.route.js";
 
-const PORT = process.env.PORT || 3000;
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 dbConnect();
 
