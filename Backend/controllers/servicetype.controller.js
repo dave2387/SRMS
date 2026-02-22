@@ -2,7 +2,13 @@ import ServiceTypeModel from "../models/ServiceType.model.js";
 
 export const createServiceType = async (req, res) => {
   try {
-    const { name, description, sequence, isForStaff, isForStudent, userId } =
+    const { 
+      name,
+      description,
+      sequence,
+      isForStaff,
+      isForStudent,
+      userId } =
       req.body;
 
     const exists = await ServiceTypeModel.findOne({ name, userId });
