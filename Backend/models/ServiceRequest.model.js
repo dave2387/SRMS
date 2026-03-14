@@ -5,10 +5,11 @@ const serviceRequestSchema = new mongoose.Schema({
   requestDateTime: { type: Date, default: Date.now },
   staffId: { type: mongoose.Schema.Types.ObjectId, ref: "Staff" },
   studentId: { type: mongoose.Schema.Types.ObjectId, ref: "Student" },
-  serviceRequestTypeId: { type: mongoose.Schema.Types.ObjectId, ref: "ServiceRequestType", required: true },
+  serviceRequestTypeId: { type: mongoose.Schema.Types.ObjectId, ref: "ServiceRequestType" },
   title: { type: String, required: true },
   description: { type: String, required: true },
-  statusId: { type: mongoose.Schema.Types.ObjectId, ref: "ServiceRequestStatus", required: true },
+  department: { type: String },
+  statusId: { type: mongoose.Schema.Types.ObjectId, ref: "ServiceRequestStatus" },
   statusDateTime: { type: Date },
   approvalStatus: { type: String },
   assignedToUserId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -16,7 +17,8 @@ const serviceRequestSchema = new mongoose.Schema({
   priorityLevel: { type: String },
   attachments: [{ type: String }],
   resourceId: { type: mongoose.Schema.Types.ObjectId, ref: "Resource" },
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userEmail: { type: String }, // Store email for better tracking
 }, { timestamps: true });
 
 export default mongoose.model("ServiceRequest", serviceRequestSchema);

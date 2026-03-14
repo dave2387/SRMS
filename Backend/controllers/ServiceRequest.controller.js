@@ -10,6 +10,7 @@ export const createServiceRequest = async (req, res) => {
       serviceRequestTypeId,
       title,
       description,
+      department,
       statusId,
       statusDateTime,
       approvalStatus,
@@ -19,16 +20,18 @@ export const createServiceRequest = async (req, res) => {
       attachments,
       resourceId,
       userId,
+      userEmail,
     } = req.body;
 
     const serviceRequest = await ServiceRequest.create({
       requestNo,
-      requestDateTime,
+      requestDateTime: requestDateTime || new Date(),
       staffId,
       studentId,
       serviceRequestTypeId,
       title,
       description,
+      department,
       statusId,
       statusDateTime,
       approvalStatus,
@@ -38,6 +41,7 @@ export const createServiceRequest = async (req, res) => {
       attachments,
       resourceId,
       userId,
+      userEmail: userEmail || userId, // Use userEmail if provided, otherwise userId
     });
 
     res.status(201).json({
